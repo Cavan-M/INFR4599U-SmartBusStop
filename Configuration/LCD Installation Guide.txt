@@ -1,0 +1,17 @@
+================I2C LCD SETUP================
+
+~~~~~~~~ENABLE I2C~~~~~~~~
+Enter the Command:
+	sudo nano /boot/config.txt
+Uncomment the following lines:
+	dtparam=i2c_arm=on
+	dtparam=i2s=on
+	dtparam=spi=on
+
+
+~~~~SET MEMORY ADDRESS~~~~
+Enter the command:
+	i2cdetect -y 1
+There will be an address listed in the table.
+Enter this next to 'address' in I2C_LSC.py
+

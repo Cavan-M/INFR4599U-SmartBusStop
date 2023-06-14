@@ -1,0 +1,4 @@
+firebase_admin==6.0
+google-cloud-vision==3.4.2
+gps==3.22
+gtfs-realtime-bindings==1.0

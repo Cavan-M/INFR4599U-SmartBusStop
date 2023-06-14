@@ -1,0 +1,65 @@
+=================GPS MODULE INSTALLATION=======================
+
+~~~~~~~INSTALL LIBRARIES~~~~~~
+Enter Commands:
+	sudo apt-get update
+	sudo apt-get install gpsd gpsd-clients
+	sudo systemctl stop gpsd.socket
+	sudo systemctl disable gpsd.socket
+
+
+~~~~~~~EDIT GPSD CONFIG~~~~~~
+Edit the config with the command:
+	sudo nano /etc/default/gpsd
+Delete everything and paste the text below:
+
+
+# Default settings for the gpsd init script and the hotplug wrapper.
+
+# Start the gpsd daemon automatically at boot time
+START_DAEMON="true"
+
+# Use USB hotplugging to add new USB devices automatically to the daemon
+USBAUTO="true"
+
+# Devices gpsd should collect to at boot time.
+# They need to be read/writeable, either by user gpsd or the group dialout.
+DEVICES="/dev/serial0"
+
+# Other options you want to pass to gpsd
+GPSD_OPTIONS="-n"
+
+GPSD_SOCKET="/var/run/gpsd.socket"
+
+
+~~~~~~ENABLE GPSD SOCKET~~~~~~
+Enter the command:
+	crontab -e
+At the end of the file enter:
+
+@reboot sudo killall -9 gpsd
+@reboot sudo rm /var/run/gpsd.sock
+@reboot sudo gpsd -D4 -F /var/run/gpsd.sock /dev/serial0
+
+
+~~~~~~~~~ENABLE SERIAL~~~~~~~~
+Enter the command:
+	sudo raspi-config
+
+Navigate to Interfaces > Serial
+DISABLE Serial login
+ENABLE Serial interface
+
+Enter the command:
+	sudo nano /boot/config.txt
+Add the text below as a new line:
+	enable_uart=1
+
+~~~~~~~~TEST THE GPS~~~~~~~~~
+run the command:
+	cgps
+You should see latitude and longitude coordinates, if not enter the command:
+	gpsmon
+If you see no output after the "Watch" or "Listen" response types, make sure you followed the aboves steps 
+
+
