@@ -13,6 +13,13 @@ https://github.com/Cavan-M/INFR4599U-SmartBusStop/blob/main/Configuration/GPS%20
 Install python Packages in Configuration/requirements.txt
 
 ## Wiring
+Wriring at the Bus Stop
+
+![bustop](https://github.com/Cavan-M/INFR4599U-SmartBusStop/assets/82681143/070a7ac4-905a-4b8b-891b-48fc28e956a2)
+
+Wiring on the Bus
+
+![gps diagram](https://github.com/Cavan-M/INFR4599U-SmartBusStop/assets/82681143/5e855d9f-06da-41b8-86bb-e74807a94f0f)
 
 
 ## Running
